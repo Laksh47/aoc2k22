@@ -42,8 +42,8 @@ def get_all_start(matrix):
 
     return positions
 
-# djikshtra shortest path algo
-def djikshtra(edges, start, dest):
+# dijkstra shortest path algo
+def dijkstra(edges, start, dest):
     visit = set()
     min_heap = [(0, start)]
     
@@ -83,7 +83,7 @@ def process_input(path = './input_test.txt'):
     adj = adj_list(matrix)
 
     # sol 1
-    # cost = djikshtra(adj, pos['start'], pos['end'])
+    # cost = dijkstra(adj, pos['start'], pos['end'])
     # print(cost)
 
     positions = get_all_start(matrix)
@@ -92,7 +92,7 @@ def process_input(path = './input_test.txt'):
     costs = defaultdict(int)
     min_cost = float('inf')
     for start in positions:
-        costs[start] = djikshtra(adj, start, pos['end'])
+        costs[start] = dijkstra(adj, start, pos['end'])
         min_cost = min(min_cost, costs[start])
 
   return min_cost
